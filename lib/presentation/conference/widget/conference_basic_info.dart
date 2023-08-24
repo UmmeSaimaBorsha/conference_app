@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:react_conf/presentation/conference_details/conference_details_screen.dart';
+import 'package:react_conf/presentation/conference_details/widget/conference_details_screen.dart';
 import 'package:react_conf/presentation/routes.dart';
 import 'package:react_conf/presentation/theme/color.dart';
 

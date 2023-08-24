@@ -28,19 +28,19 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void didChangeDependencies() {
-    super.didChangeDependencies();
     context.read<ConferenceCubit>().fetchConferences();
     _selectedIndex = 0;
     _pageController = PageController(initialPage: _selectedIndex);
+    super.didChangeDependencies();
   }
 
   @override
   void initState() {
-    super.initState();
     _pages = [
       const ConferenceScreen(),
       const SponsorScreen(),
     ];
+    super.initState();
   }
 
   @override

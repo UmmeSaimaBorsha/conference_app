@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:react_conf/presentation/conference_details/conference_details_screen.dart';
-import 'package:react_conf/presentation/main_screen/main_screen.dart';
+import 'package:react_conf/presentation/conference_details/widget/conference_details_screen.dart';
+import 'package:react_conf/presentation/main_screen/widget/main_screen.dart';
 
 class Routes {
   static const String main = 'main';

@@ -10,4 +10,8 @@ class ConferenceRepositoryImpl implements ConferenceRepository {
   @override
   Future<dynamic> getConferences() async =>
       await _conferenceDataSource.getConferences();
+
+  @override
+  Future<dynamic> getConference({required String id}) async =>
+      await _conferenceDataSource.getConference(id: id);
 }
