@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:react_conf/custom_bloc_observer.dart';
 import 'package:react_conf/injection_container.dart' as di;
 import 'package:react_conf/presentation/conference/cubit/conference_cubit.dart';
-import 'package:react_conf/presentation/main_screen/main_screen.dart';
+import 'package:react_conf/presentation/main_screen/widget/main_screen.dart';
 import 'package:react_conf/presentation/routes.dart';
 import 'package:react_conf/presentation/theme/app_theme.dart';
 
