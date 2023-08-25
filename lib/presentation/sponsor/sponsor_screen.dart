@@ -1,13 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:react_conf/presentation/common/widget/custom_app_bar.dart';
+import 'package:react_conf/presentation/theme/color.dart';
 
 class SponsorScreen extends StatelessWidget {
-  const SponsorScreen({super.key});
+  const SponsorScreen({super.key, required this.onBackPressed});
+
+  final VoidCallback onBackPressed;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: CustomAppBar(
+        title: Text(
+          'Our Sponsor',
+          style: GoogleFonts.inter(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: colorSecondaryText),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        isCenterTitle: false,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: onBackPressed,
+        ),
+      ),
       body: SingleChildScrollView(
           child: Padding(
         padding: const EdgeInsets.all(16),
@@ -46,7 +67,7 @@ class SponsorScreen extends StatelessWidget {
                     ]),
               ),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 16),
             Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -83,7 +104,7 @@ class SponsorScreen extends StatelessWidget {
                     ]),
               ),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 16),
             Container(
               width: double.infinity,
               decoration: BoxDecoration(

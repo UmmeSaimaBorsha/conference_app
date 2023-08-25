@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:react_conf/presentation/common/widget/custom_app_bar.dart';
 import 'package:react_conf/presentation/conference/cubit/conference_cubit.dart';
 import 'package:react_conf/presentation/conference/widget/conference_screen.dart';
 import 'package:react_conf/presentation/main_screen/widget/custom_bottom_navigation_bar.dart';
@@ -26,6 +24,12 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+  void _onBackPressed() {
+    setState(() {
+      _onItemSelected(0);
+    });
+  }
+
   @override
   void didChangeDependencies() {
     context.read<ConferenceCubit>().fetchConferences();
@@ -38,7 +42,12 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     _pages = [
       const ConferenceScreen(),
-      const SponsorScreen(),
+      WillPopScope(
+          onWillPop: () {
+            _onBackPressed();
+            return Future.value(false);
+          },
+          child: SponsorScreen(onBackPressed: _onBackPressed)),
     ];
     super.initState();
   }
@@ -52,12 +61,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: SvgPicture.asset(
-          'assets/icons/ic-app-logo.svg',
-        ),
-        isCenterTitle: true,
-      ),
       body: PageView(
         controller: _pageController,
         physics: const NeverScrollableScrollPhysics(),

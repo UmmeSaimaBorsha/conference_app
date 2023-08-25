@@ -7,11 +7,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       {super.key,
       required this.title,
       required this.isCenterTitle,
-      this.bottom});
+      this.bottom,
+      this.leading});
 
   final Widget title;
   final bool isCenterTitle;
   final PreferredSizeWidget? bottom;
+  final Widget? leading;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         statusBarIconBrightness: Brightness.dark,
       ),
       elevation: 4,
+      leading: leading,
       shadowColor: Colors.grey.withOpacity(0.2),
       backgroundColor: Colors.white,
       iconTheme: const IconThemeData(color: colorSecondaryText),
@@ -33,5 +36,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize =>
-      Size.fromHeight(kToolbarHeight * (isCenterTitle ? 1 : 2));
+      Size.fromHeight(kToolbarHeight * (bottom == null ? 1 : 2));
 }
