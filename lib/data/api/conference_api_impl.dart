@@ -30,7 +30,7 @@ class ConferenceApiImpl implements ConferenceApi {
     final queryConference = '''
       query {
           conference(id: "$id") {
-                organizer {
+                organizers {
                       image {
                           url,
                       },

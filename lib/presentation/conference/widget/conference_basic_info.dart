@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:react_conf/presentation/conference_details/widget/conference_details_screen.dart';
+import 'package:react_conf/presentation/conference_info/widget/conference_info_screen.dart';
 import 'package:react_conf/presentation/routes.dart';
 import 'package:react_conf/presentation/theme/color.dart';
 
@@ -84,15 +84,15 @@ class BasicInfo extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.of(context).pushNamed(
-            Routes.conferenceDetails,
-            arguments: ConferenceDetailsScreenArgs(
+            Routes.conferenceInfo,
+            arguments: ConferenceInfoScreenArgs(
               id: id,
             ),
           );
         },
         child: Card(
           margin: const EdgeInsets.symmetric(horizontal: 16),
-          color: Colors.white,
+          color: const Color(0xFFF9FAFB),
           shadowColor: Colors.grey.withOpacity(0.2),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),

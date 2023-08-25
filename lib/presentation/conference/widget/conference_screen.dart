@@ -23,20 +23,23 @@ class ConferenceScreen extends StatelessWidget {
                 color: colorGreyDark)),
       )),
       success: (conferences) {
-        return ListView.builder(
-          itemBuilder: (context, index) {
-            final conference = conferences[index];
-            if (conference == null) {
-              return const SizedBox();
-            } else {
-              return ConferenceItem(
-                conference: conference,
-                isTop: index == 0,
-                isBottom: index == conferences.length - 1,
-              );
-            }
-          },
-          itemCount: conferences.length,
+        return Container(
+          color: colorBackground,
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              final conference = conferences[index];
+              if (conference == null) {
+                return const SizedBox();
+              } else {
+                return ConferenceItem(
+                  conference: conference,
+                  isTop: index == 0,
+                  isBottom: index == conferences.length - 1,
+                );
+              }
+            },
+            itemCount: conferences.length,
+          ),
         );
       },
     );

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'conference_details.dart';
+part of 'conference_info.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,26 +14,26 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ConferenceDetails _$ConferenceDetailsFromJson(Map<String, dynamic> json) {
+ConferenceInfo _$ConferenceInfoFromJson(Map<String, dynamic> json) {
   return _ConferenceDetails.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ConferenceDetails {
+mixin _$ConferenceInfo {
   @JsonKey(name: 'conference')
   Conference? get conference => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ConferenceDetailsCopyWith<ConferenceDetails> get copyWith =>
+  $ConferenceInfoCopyWith<ConferenceInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ConferenceDetailsCopyWith<$Res> {
-  factory $ConferenceDetailsCopyWith(
-          ConferenceDetails value, $Res Function(ConferenceDetails) then) =
-      _$ConferenceDetailsCopyWithImpl<$Res, ConferenceDetails>;
+abstract class $ConferenceInfoCopyWith<$Res> {
+  factory $ConferenceInfoCopyWith(
+          ConferenceInfo value, $Res Function(ConferenceInfo) then) =
+      _$ConferenceInfoCopyWithImpl<$Res, ConferenceInfo>;
   @useResult
   $Res call({@JsonKey(name: 'conference') Conference? conference});
 
@@ -41,9 +41,9 @@ abstract class $ConferenceDetailsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ConferenceDetailsCopyWithImpl<$Res, $Val extends ConferenceDetails>
-    implements $ConferenceDetailsCopyWith<$Res> {
-  _$ConferenceDetailsCopyWithImpl(this._value, this._then);
+class _$ConferenceInfoCopyWithImpl<$Res, $Val extends ConferenceInfo>
+    implements $ConferenceInfoCopyWith<$Res> {
+  _$ConferenceInfoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -78,7 +78,7 @@ class _$ConferenceDetailsCopyWithImpl<$Res, $Val extends ConferenceDetails>
 
 /// @nodoc
 abstract class _$$_ConferenceDetailsCopyWith<$Res>
-    implements $ConferenceDetailsCopyWith<$Res> {
+    implements $ConferenceInfoCopyWith<$Res> {
   factory _$$_ConferenceDetailsCopyWith(_$_ConferenceDetails value,
           $Res Function(_$_ConferenceDetails) then) =
       __$$_ConferenceDetailsCopyWithImpl<$Res>;
@@ -92,7 +92,7 @@ abstract class _$$_ConferenceDetailsCopyWith<$Res>
 
 /// @nodoc
 class __$$_ConferenceDetailsCopyWithImpl<$Res>
-    extends _$ConferenceDetailsCopyWithImpl<$Res, _$_ConferenceDetails>
+    extends _$ConferenceInfoCopyWithImpl<$Res, _$_ConferenceDetails>
     implements _$$_ConferenceDetailsCopyWith<$Res> {
   __$$_ConferenceDetailsCopyWithImpl(
       _$_ConferenceDetails _value, $Res Function(_$_ConferenceDetails) _then)
@@ -127,7 +127,7 @@ class _$_ConferenceDetails implements _ConferenceDetails {
 
   @override
   String toString() {
-    return 'ConferenceDetails(conference: $conference)';
+    return 'ConferenceInfo(conference: $conference)';
   }
 
   @override
@@ -158,7 +158,7 @@ class _$_ConferenceDetails implements _ConferenceDetails {
   }
 }
 
-abstract class _ConferenceDetails implements ConferenceDetails {
+abstract class _ConferenceDetails implements ConferenceInfo {
   const factory _ConferenceDetails(
       {@JsonKey(name: 'conference')
       required final Conference? conference}) = _$_ConferenceDetails;

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'sponsor.dart';
+part of 'conference_collaborator.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,41 +14,49 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Sponsor _$SponsorFromJson(Map<String, dynamic> json) {
-  return _Sponsor.fromJson(json);
+ConferenceCollaborator _$ConferenceCollaboratorFromJson(
+    Map<String, dynamic> json) {
+  return _EventCollaborator.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Sponsor {
+mixin _$ConferenceCollaborator {
   @JsonKey(name: "image")
   Image? get image => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: "about")
   String? get about => throw _privateConstructorUsedError;
+  @JsonKey(name: "social")
+  Social? get social => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SponsorCopyWith<Sponsor> get copyWith => throw _privateConstructorUsedError;
+  $ConferenceCollaboratorCopyWith<ConferenceCollaborator> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SponsorCopyWith<$Res> {
-  factory $SponsorCopyWith(Sponsor value, $Res Function(Sponsor) then) =
-      _$SponsorCopyWithImpl<$Res, Sponsor>;
+abstract class $ConferenceCollaboratorCopyWith<$Res> {
+  factory $ConferenceCollaboratorCopyWith(ConferenceCollaborator value,
+          $Res Function(ConferenceCollaborator) then) =
+      _$ConferenceCollaboratorCopyWithImpl<$Res, ConferenceCollaborator>;
   @useResult
   $Res call(
       {@JsonKey(name: "image") Image? image,
       @JsonKey(name: "name") String? name,
-      @JsonKey(name: "about") String? about});
+      @JsonKey(name: "about") String? about,
+      @JsonKey(name: "social") Social? social});
 
   $ImageCopyWith<$Res>? get image;
+  $SocialCopyWith<$Res>? get social;
 }
 
 /// @nodoc
-class _$SponsorCopyWithImpl<$Res, $Val extends Sponsor>
-    implements $SponsorCopyWith<$Res> {
-  _$SponsorCopyWithImpl(this._value, this._then);
+class _$ConferenceCollaboratorCopyWithImpl<$Res,
+        $Val extends ConferenceCollaborator>
+    implements $ConferenceCollaboratorCopyWith<$Res> {
+  _$ConferenceCollaboratorCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -61,6 +69,7 @@ class _$SponsorCopyWithImpl<$Res, $Val extends Sponsor>
     Object? image = freezed,
     Object? name = freezed,
     Object? about = freezed,
+    Object? social = freezed,
   }) {
     return _then(_value.copyWith(
       image: freezed == image
@@ -75,6 +84,10 @@ class _$SponsorCopyWithImpl<$Res, $Val extends Sponsor>
           ? _value.about
           : about // ignore: cast_nullable_to_non_nullable
               as String?,
+      social: freezed == social
+          ? _value.social
+          : social // ignore: cast_nullable_to_non_nullable
+              as Social?,
     ) as $Val);
   }
 
@@ -89,29 +102,46 @@ class _$SponsorCopyWithImpl<$Res, $Val extends Sponsor>
       return _then(_value.copyWith(image: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SocialCopyWith<$Res>? get social {
+    if (_value.social == null) {
+      return null;
+    }
+
+    return $SocialCopyWith<$Res>(_value.social!, (value) {
+      return _then(_value.copyWith(social: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$_SponsorCopyWith<$Res> implements $SponsorCopyWith<$Res> {
-  factory _$$_SponsorCopyWith(
-          _$_Sponsor value, $Res Function(_$_Sponsor) then) =
-      __$$_SponsorCopyWithImpl<$Res>;
+abstract class _$$_EventCollaboratorCopyWith<$Res>
+    implements $ConferenceCollaboratorCopyWith<$Res> {
+  factory _$$_EventCollaboratorCopyWith(_$_EventCollaborator value,
+          $Res Function(_$_EventCollaborator) then) =
+      __$$_EventCollaboratorCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: "image") Image? image,
       @JsonKey(name: "name") String? name,
-      @JsonKey(name: "about") String? about});
+      @JsonKey(name: "about") String? about,
+      @JsonKey(name: "social") Social? social});
 
   @override
   $ImageCopyWith<$Res>? get image;
+  @override
+  $SocialCopyWith<$Res>? get social;
 }
 
 /// @nodoc
-class __$$_SponsorCopyWithImpl<$Res>
-    extends _$SponsorCopyWithImpl<$Res, _$_Sponsor>
-    implements _$$_SponsorCopyWith<$Res> {
-  __$$_SponsorCopyWithImpl(_$_Sponsor _value, $Res Function(_$_Sponsor) _then)
+class __$$_EventCollaboratorCopyWithImpl<$Res>
+    extends _$ConferenceCollaboratorCopyWithImpl<$Res, _$_EventCollaborator>
+    implements _$$_EventCollaboratorCopyWith<$Res> {
+  __$$_EventCollaboratorCopyWithImpl(
+      _$_EventCollaborator _value, $Res Function(_$_EventCollaborator) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -120,8 +150,9 @@ class __$$_SponsorCopyWithImpl<$Res>
     Object? image = freezed,
     Object? name = freezed,
     Object? about = freezed,
+    Object? social = freezed,
   }) {
-    return _then(_$_Sponsor(
+    return _then(_$_EventCollaborator(
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -134,20 +165,25 @@ class __$$_SponsorCopyWithImpl<$Res>
           ? _value.about
           : about // ignore: cast_nullable_to_non_nullable
               as String?,
+      social: freezed == social
+          ? _value.social
+          : social // ignore: cast_nullable_to_non_nullable
+              as Social?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Sponsor implements _Sponsor {
-  const _$_Sponsor(
+class _$_EventCollaborator implements _EventCollaborator {
+  const _$_EventCollaborator(
       {@JsonKey(name: "image") required this.image,
       @JsonKey(name: "name") required this.name,
-      @JsonKey(name: "about") required this.about});
+      @JsonKey(name: "about") required this.about,
+      @JsonKey(name: "social") required this.social});
 
-  factory _$_Sponsor.fromJson(Map<String, dynamic> json) =>
-      _$$_SponsorFromJson(json);
+  factory _$_EventCollaborator.fromJson(Map<String, dynamic> json) =>
+      _$$_EventCollaboratorFromJson(json);
 
   @override
   @JsonKey(name: "image")
@@ -158,47 +194,55 @@ class _$_Sponsor implements _Sponsor {
   @override
   @JsonKey(name: "about")
   final String? about;
+  @override
+  @JsonKey(name: "social")
+  final Social? social;
 
   @override
   String toString() {
-    return 'Sponsor(image: $image, name: $name, about: $about)';
+    return 'ConferenceCollaborator(image: $image, name: $name, about: $about, social: $social)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Sponsor &&
+            other is _$_EventCollaborator &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.about, about) || other.about == about));
+            (identical(other.about, about) || other.about == about) &&
+            (identical(other.social, social) || other.social == social));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, image, name, about);
+  int get hashCode => Object.hash(runtimeType, image, name, about, social);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SponsorCopyWith<_$_Sponsor> get copyWith =>
-      __$$_SponsorCopyWithImpl<_$_Sponsor>(this, _$identity);
+  _$$_EventCollaboratorCopyWith<_$_EventCollaborator> get copyWith =>
+      __$$_EventCollaboratorCopyWithImpl<_$_EventCollaborator>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SponsorToJson(
+    return _$$_EventCollaboratorToJson(
       this,
     );
   }
 }
 
-abstract class _Sponsor implements Sponsor {
-  const factory _Sponsor(
-      {@JsonKey(name: "image") required final Image? image,
-      @JsonKey(name: "name") required final String? name,
-      @JsonKey(name: "about") required final String? about}) = _$_Sponsor;
+abstract class _EventCollaborator implements ConferenceCollaborator {
+  const factory _EventCollaborator(
+          {@JsonKey(name: "image") required final Image? image,
+          @JsonKey(name: "name") required final String? name,
+          @JsonKey(name: "about") required final String? about,
+          @JsonKey(name: "social") required final Social? social}) =
+      _$_EventCollaborator;
 
-  factory _Sponsor.fromJson(Map<String, dynamic> json) = _$_Sponsor.fromJson;
+  factory _EventCollaborator.fromJson(Map<String, dynamic> json) =
+      _$_EventCollaborator.fromJson;
 
   @override
   @JsonKey(name: "image")
@@ -210,7 +254,10 @@ abstract class _Sponsor implements Sponsor {
   @JsonKey(name: "about")
   String? get about;
   @override
+  @JsonKey(name: "social")
+  Social? get social;
+  @override
   @JsonKey(ignore: true)
-  _$$_SponsorCopyWith<_$_Sponsor> get copyWith =>
+  _$$_EventCollaboratorCopyWith<_$_EventCollaborator> get copyWith =>
       throw _privateConstructorUsedError;
 }

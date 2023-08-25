@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'conference_details_ui_state.dart';
+part of 'conference_info_ui_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ConferenceDetailsUiState {
+mixin _$ConferenceInfoUiState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
@@ -63,17 +63,17 @@ mixin _$ConferenceDetailsUiState {
 }
 
 /// @nodoc
-abstract class $ConferenceDetailsUiStateCopyWith<$Res> {
-  factory $ConferenceDetailsUiStateCopyWith(ConferenceDetailsUiState value,
-          $Res Function(ConferenceDetailsUiState) then) =
-      _$ConferenceDetailsUiStateCopyWithImpl<$Res, ConferenceDetailsUiState>;
+abstract class $ConferenceInfoUiStateCopyWith<$Res> {
+  factory $ConferenceInfoUiStateCopyWith(ConferenceInfoUiState value,
+          $Res Function(ConferenceInfoUiState) then) =
+      _$ConferenceInfoUiStateCopyWithImpl<$Res, ConferenceInfoUiState>;
 }
 
 /// @nodoc
-class _$ConferenceDetailsUiStateCopyWithImpl<$Res,
-        $Val extends ConferenceDetailsUiState>
-    implements $ConferenceDetailsUiStateCopyWith<$Res> {
-  _$ConferenceDetailsUiStateCopyWithImpl(this._value, this._then);
+class _$ConferenceInfoUiStateCopyWithImpl<$Res,
+        $Val extends ConferenceInfoUiState>
+    implements $ConferenceInfoUiStateCopyWith<$Res> {
+  _$ConferenceInfoUiStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -90,7 +90,7 @@ abstract class _$$LoadingStateCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingStateCopyWithImpl<$Res>
-    extends _$ConferenceDetailsUiStateCopyWithImpl<$Res, _$LoadingState>
+    extends _$ConferenceInfoUiStateCopyWithImpl<$Res, _$LoadingState>
     implements _$$LoadingStateCopyWith<$Res> {
   __$$LoadingStateCopyWithImpl(
       _$LoadingState _value, $Res Function(_$LoadingState) _then)
@@ -104,7 +104,7 @@ class _$LoadingState implements LoadingState {
 
   @override
   String toString() {
-    return 'ConferenceDetailsUiState.loading()';
+    return 'ConferenceInfoUiState.loading()';
   }
 
   @override
@@ -185,7 +185,7 @@ class _$LoadingState implements LoadingState {
   }
 }
 
-abstract class LoadingState implements ConferenceDetailsUiState {
+abstract class LoadingState implements ConferenceInfoUiState {
   const factory LoadingState() = _$LoadingState;
 }
 
@@ -202,7 +202,7 @@ abstract class _$$SuccessStateCopyWith<$Res> {
 
 /// @nodoc
 class __$$SuccessStateCopyWithImpl<$Res>
-    extends _$ConferenceDetailsUiStateCopyWithImpl<$Res, _$SuccessState>
+    extends _$ConferenceInfoUiStateCopyWithImpl<$Res, _$SuccessState>
     implements _$$SuccessStateCopyWith<$Res> {
   __$$SuccessStateCopyWithImpl(
       _$SuccessState _value, $Res Function(_$SuccessState) _then)
@@ -244,7 +244,7 @@ class _$SuccessState implements SuccessState {
 
   @override
   String toString() {
-    return 'ConferenceDetailsUiState.success(conference: $conference)';
+    return 'ConferenceInfoUiState.success(conference: $conference)';
   }
 
   @override
@@ -334,7 +334,7 @@ class _$SuccessState implements SuccessState {
   }
 }
 
-abstract class SuccessState implements ConferenceDetailsUiState {
+abstract class SuccessState implements ConferenceInfoUiState {
   const factory SuccessState({required final Conference? conference}) =
       _$SuccessState;
 
@@ -355,7 +355,7 @@ abstract class _$$ErrorStateCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorStateCopyWithImpl<$Res>
-    extends _$ConferenceDetailsUiStateCopyWithImpl<$Res, _$ErrorState>
+    extends _$ConferenceInfoUiStateCopyWithImpl<$Res, _$ErrorState>
     implements _$$ErrorStateCopyWith<$Res> {
   __$$ErrorStateCopyWithImpl(
       _$ErrorState _value, $Res Function(_$ErrorState) _then)
@@ -385,7 +385,7 @@ class _$ErrorState implements ErrorState {
 
   @override
   String toString() {
-    return 'ConferenceDetailsUiState.error(message: $message)';
+    return 'ConferenceInfoUiState.error(message: $message)';
   }
 
   @override
@@ -474,7 +474,7 @@ class _$ErrorState implements ErrorState {
   }
 }
 
-abstract class ErrorState implements ConferenceDetailsUiState {
+abstract class ErrorState implements ConferenceInfoUiState {
   const factory ErrorState({required final String message}) = _$ErrorState;
 
   String get message;

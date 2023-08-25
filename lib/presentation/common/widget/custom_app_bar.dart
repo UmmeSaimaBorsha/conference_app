@@ -4,10 +4,14 @@ import 'package:react_conf/presentation/theme/color.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar(
-      {super.key, required this.title, required this.isCenterTitle});
+      {super.key,
+      required this.title,
+      required this.isCenterTitle,
+      this.bottom});
 
   final Widget title;
   final bool isCenterTitle;
+  final PreferredSizeWidget? bottom;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +27,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       iconTheme: const IconThemeData(color: colorSecondaryText),
       title: title,
       centerTitle: isCenterTitle,
+      bottom: bottom,
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize =>
+      Size.fromHeight(kToolbarHeight * (isCenterTitle ? 1 : 2));
 }

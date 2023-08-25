@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'conference_details.dart';
+part of 'conference_info.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

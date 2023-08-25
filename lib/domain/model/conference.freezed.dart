@@ -28,14 +28,17 @@ mixin _$Conference {
   String? get startDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'slogan')
   String? get slogan => throw _privateConstructorUsedError;
-  @JsonKey(name: "organizer")
-  Organizer? get organizer => throw _privateConstructorUsedError;
+  @JsonKey(name: "organizers")
+  List<ConferenceCollaborator?>? get organizers =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: "speakers")
-  List<Speaker>? get speakers => throw _privateConstructorUsedError;
+  List<ConferenceCollaborator?>? get speakers =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: "schedules")
-  List<Schedule>? get schedules => throw _privateConstructorUsedError;
+  List<Schedule?>? get schedules => throw _privateConstructorUsedError;
   @JsonKey(name: "sponsors")
-  List<Sponsor>? get sponsors => throw _privateConstructorUsedError;
+  List<ConferenceCollaborator?>? get sponsors =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,12 +57,10 @@ abstract class $ConferenceCopyWith<$Res> {
       @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'startDate') String? startDate,
       @JsonKey(name: 'slogan') String? slogan,
-      @JsonKey(name: "organizer") Organizer? organizer,
-      @JsonKey(name: "speakers") List<Speaker>? speakers,
-      @JsonKey(name: "schedules") List<Schedule>? schedules,
-      @JsonKey(name: "sponsors") List<Sponsor>? sponsors});
-
-  $OrganizerCopyWith<$Res>? get organizer;
+      @JsonKey(name: "organizers") List<ConferenceCollaborator?>? organizers,
+      @JsonKey(name: "speakers") List<ConferenceCollaborator?>? speakers,
+      @JsonKey(name: "schedules") List<Schedule?>? schedules,
+      @JsonKey(name: "sponsors") List<ConferenceCollaborator?>? sponsors});
 }
 
 /// @nodoc
@@ -79,7 +80,7 @@ class _$ConferenceCopyWithImpl<$Res, $Val extends Conference>
     Object? name = freezed,
     Object? startDate = freezed,
     Object? slogan = freezed,
-    Object? organizer = freezed,
+    Object? organizers = freezed,
     Object? speakers = freezed,
     Object? schedules = freezed,
     Object? sponsors = freezed,
@@ -101,35 +102,23 @@ class _$ConferenceCopyWithImpl<$Res, $Val extends Conference>
           ? _value.slogan
           : slogan // ignore: cast_nullable_to_non_nullable
               as String?,
-      organizer: freezed == organizer
-          ? _value.organizer
-          : organizer // ignore: cast_nullable_to_non_nullable
-              as Organizer?,
+      organizers: freezed == organizers
+          ? _value.organizers
+          : organizers // ignore: cast_nullable_to_non_nullable
+              as List<ConferenceCollaborator?>?,
       speakers: freezed == speakers
           ? _value.speakers
           : speakers // ignore: cast_nullable_to_non_nullable
-              as List<Speaker>?,
+              as List<ConferenceCollaborator?>?,
       schedules: freezed == schedules
           ? _value.schedules
           : schedules // ignore: cast_nullable_to_non_nullable
-              as List<Schedule>?,
+              as List<Schedule?>?,
       sponsors: freezed == sponsors
           ? _value.sponsors
           : sponsors // ignore: cast_nullable_to_non_nullable
-              as List<Sponsor>?,
+              as List<ConferenceCollaborator?>?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $OrganizerCopyWith<$Res>? get organizer {
-    if (_value.organizer == null) {
-      return null;
-    }
-
-    return $OrganizerCopyWith<$Res>(_value.organizer!, (value) {
-      return _then(_value.copyWith(organizer: value) as $Val);
-    });
   }
 }
 
@@ -146,13 +135,10 @@ abstract class _$$_ConferenceCopyWith<$Res>
       @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'startDate') String? startDate,
       @JsonKey(name: 'slogan') String? slogan,
-      @JsonKey(name: "organizer") Organizer? organizer,
-      @JsonKey(name: "speakers") List<Speaker>? speakers,
-      @JsonKey(name: "schedules") List<Schedule>? schedules,
-      @JsonKey(name: "sponsors") List<Sponsor>? sponsors});
-
-  @override
-  $OrganizerCopyWith<$Res>? get organizer;
+      @JsonKey(name: "organizers") List<ConferenceCollaborator?>? organizers,
+      @JsonKey(name: "speakers") List<ConferenceCollaborator?>? speakers,
+      @JsonKey(name: "schedules") List<Schedule?>? schedules,
+      @JsonKey(name: "sponsors") List<ConferenceCollaborator?>? sponsors});
 }
 
 /// @nodoc
@@ -170,7 +156,7 @@ class __$$_ConferenceCopyWithImpl<$Res>
     Object? name = freezed,
     Object? startDate = freezed,
     Object? slogan = freezed,
-    Object? organizer = freezed,
+    Object? organizers = freezed,
     Object? speakers = freezed,
     Object? schedules = freezed,
     Object? sponsors = freezed,
@@ -192,22 +178,22 @@ class __$$_ConferenceCopyWithImpl<$Res>
           ? _value.slogan
           : slogan // ignore: cast_nullable_to_non_nullable
               as String?,
-      organizer: freezed == organizer
-          ? _value.organizer
-          : organizer // ignore: cast_nullable_to_non_nullable
-              as Organizer?,
+      organizers: freezed == organizers
+          ? _value._organizers
+          : organizers // ignore: cast_nullable_to_non_nullable
+              as List<ConferenceCollaborator?>?,
       speakers: freezed == speakers
           ? _value._speakers
           : speakers // ignore: cast_nullable_to_non_nullable
-              as List<Speaker>?,
+              as List<ConferenceCollaborator?>?,
       schedules: freezed == schedules
           ? _value._schedules
           : schedules // ignore: cast_nullable_to_non_nullable
-              as List<Schedule>?,
+              as List<Schedule?>?,
       sponsors: freezed == sponsors
           ? _value._sponsors
           : sponsors // ignore: cast_nullable_to_non_nullable
-              as List<Sponsor>?,
+              as List<ConferenceCollaborator?>?,
     ));
   }
 }
@@ -220,11 +206,15 @@ class _$_Conference implements _Conference {
       @JsonKey(name: 'name') required this.name,
       @JsonKey(name: 'startDate') required this.startDate,
       @JsonKey(name: 'slogan') required this.slogan,
-      @JsonKey(name: "organizer") required this.organizer,
-      @JsonKey(name: "speakers") required final List<Speaker>? speakers,
-      @JsonKey(name: "schedules") required final List<Schedule>? schedules,
-      @JsonKey(name: "sponsors") required final List<Sponsor>? sponsors})
-      : _speakers = speakers,
+      @JsonKey(name: "organizers")
+      required final List<ConferenceCollaborator?>? organizers,
+      @JsonKey(name: "speakers")
+      required final List<ConferenceCollaborator?>? speakers,
+      @JsonKey(name: "schedules") required final List<Schedule?>? schedules,
+      @JsonKey(name: "sponsors")
+      required final List<ConferenceCollaborator?>? sponsors})
+      : _organizers = organizers,
+        _speakers = speakers,
         _schedules = schedules,
         _sponsors = sponsors;
 
@@ -243,13 +233,21 @@ class _$_Conference implements _Conference {
   @override
   @JsonKey(name: 'slogan')
   final String? slogan;
+  final List<ConferenceCollaborator?>? _organizers;
   @override
-  @JsonKey(name: "organizer")
-  final Organizer? organizer;
-  final List<Speaker>? _speakers;
+  @JsonKey(name: "organizers")
+  List<ConferenceCollaborator?>? get organizers {
+    final value = _organizers;
+    if (value == null) return null;
+    if (_organizers is EqualUnmodifiableListView) return _organizers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<ConferenceCollaborator?>? _speakers;
   @override
   @JsonKey(name: "speakers")
-  List<Speaker>? get speakers {
+  List<ConferenceCollaborator?>? get speakers {
     final value = _speakers;
     if (value == null) return null;
     if (_speakers is EqualUnmodifiableListView) return _speakers;
@@ -257,10 +255,10 @@ class _$_Conference implements _Conference {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<Schedule>? _schedules;
+  final List<Schedule?>? _schedules;
   @override
   @JsonKey(name: "schedules")
-  List<Schedule>? get schedules {
+  List<Schedule?>? get schedules {
     final value = _schedules;
     if (value == null) return null;
     if (_schedules is EqualUnmodifiableListView) return _schedules;
@@ -268,10 +266,10 @@ class _$_Conference implements _Conference {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<Sponsor>? _sponsors;
+  final List<ConferenceCollaborator?>? _sponsors;
   @override
   @JsonKey(name: "sponsors")
-  List<Sponsor>? get sponsors {
+  List<ConferenceCollaborator?>? get sponsors {
     final value = _sponsors;
     if (value == null) return null;
     if (_sponsors is EqualUnmodifiableListView) return _sponsors;
@@ -281,7 +279,7 @@ class _$_Conference implements _Conference {
 
   @override
   String toString() {
-    return 'Conference(id: $id, name: $name, startDate: $startDate, slogan: $slogan, organizer: $organizer, speakers: $speakers, schedules: $schedules, sponsors: $sponsors)';
+    return 'Conference(id: $id, name: $name, startDate: $startDate, slogan: $slogan, organizers: $organizers, speakers: $speakers, schedules: $schedules, sponsors: $sponsors)';
   }
 
   @override
@@ -294,8 +292,8 @@ class _$_Conference implements _Conference {
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
             (identical(other.slogan, slogan) || other.slogan == slogan) &&
-            (identical(other.organizer, organizer) ||
-                other.organizer == organizer) &&
+            const DeepCollectionEquality()
+                .equals(other._organizers, _organizers) &&
             const DeepCollectionEquality().equals(other._speakers, _speakers) &&
             const DeepCollectionEquality()
                 .equals(other._schedules, _schedules) &&
@@ -310,7 +308,7 @@ class _$_Conference implements _Conference {
       name,
       startDate,
       slogan,
-      organizer,
+      const DeepCollectionEquality().hash(_organizers),
       const DeepCollectionEquality().hash(_speakers),
       const DeepCollectionEquality().hash(_schedules),
       const DeepCollectionEquality().hash(_sponsors));
@@ -331,15 +329,17 @@ class _$_Conference implements _Conference {
 
 abstract class _Conference implements Conference {
   const factory _Conference(
-          {@JsonKey(name: 'id') required final String? id,
-          @JsonKey(name: 'name') required final String? name,
-          @JsonKey(name: 'startDate') required final String? startDate,
-          @JsonKey(name: 'slogan') required final String? slogan,
-          @JsonKey(name: "organizer") required final Organizer? organizer,
-          @JsonKey(name: "speakers") required final List<Speaker>? speakers,
-          @JsonKey(name: "schedules") required final List<Schedule>? schedules,
-          @JsonKey(name: "sponsors") required final List<Sponsor>? sponsors}) =
-      _$_Conference;
+      {@JsonKey(name: 'id') required final String? id,
+      @JsonKey(name: 'name') required final String? name,
+      @JsonKey(name: 'startDate') required final String? startDate,
+      @JsonKey(name: 'slogan') required final String? slogan,
+      @JsonKey(name: "organizers")
+      required final List<ConferenceCollaborator?>? organizers,
+      @JsonKey(name: "speakers")
+      required final List<ConferenceCollaborator?>? speakers,
+      @JsonKey(name: "schedules") required final List<Schedule?>? schedules,
+      @JsonKey(name: "sponsors")
+      required final List<ConferenceCollaborator?>? sponsors}) = _$_Conference;
 
   factory _Conference.fromJson(Map<String, dynamic> json) =
       _$_Conference.fromJson;
@@ -357,17 +357,17 @@ abstract class _Conference implements Conference {
   @JsonKey(name: 'slogan')
   String? get slogan;
   @override
-  @JsonKey(name: "organizer")
-  Organizer? get organizer;
+  @JsonKey(name: "organizers")
+  List<ConferenceCollaborator?>? get organizers;
   @override
   @JsonKey(name: "speakers")
-  List<Speaker>? get speakers;
+  List<ConferenceCollaborator?>? get speakers;
   @override
   @JsonKey(name: "schedules")
-  List<Schedule>? get schedules;
+  List<Schedule?>? get schedules;
   @override
   @JsonKey(name: "sponsors")
-  List<Sponsor>? get sponsors;
+  List<ConferenceCollaborator?>? get sponsors;
   @override
   @JsonKey(ignore: true)
   _$$_ConferenceCopyWith<_$_Conference> get copyWith =>
