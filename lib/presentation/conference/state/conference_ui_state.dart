@@ -5,6 +5,8 @@ part 'conference_ui_state.freezed.dart';
 
 @freezed
 class ConferenceUiState with _$ConferenceUiState {
+  const factory ConferenceUiState.initial() = InitialState;
+
   const factory ConferenceUiState.loading() = LoadingState;
 
   const factory ConferenceUiState.success({required List<Conference?> conferences}) = SuccessState;

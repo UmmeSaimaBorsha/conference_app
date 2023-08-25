@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:react_conf/presentation/common/widget/error_screen.dart';
 import 'package:react_conf/presentation/conference/cubit/conference_cubit.dart';
 import 'package:react_conf/presentation/conference/widget/conference_item.dart';
 import 'package:react_conf/presentation/theme/color.dart';
@@ -12,16 +12,11 @@ class ConferenceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final uiState = context.watch<ConferenceCubit>().state;
     return uiState.when(
+      initial: () => const SizedBox(),
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (message) => Center(
-          child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Text(message,
-            style: GoogleFonts.inter(
-                fontSize: 14,
-                fontWeight: FontWeight.normal,
-                color: colorGreyDark)),
-      )),
+      error: (message) => ErrorScreen(onPressed: () {
+        context.read<ConferenceCubit>().fetchConferences();
+      }),
       success: (conferences) {
         return Container(
           color: colorBackground,

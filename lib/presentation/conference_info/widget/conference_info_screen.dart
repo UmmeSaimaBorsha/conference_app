@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:react_conf/presentation/common/widget/custom_app_bar.dart';
+import 'package:react_conf/presentation/common/widget/error_screen.dart';
 import 'package:react_conf/presentation/conference_info/cubit/conference_info_cubit.dart';
 import 'package:react_conf/presentation/conference_info/state/conference_info_ui_state.dart';
 import 'package:react_conf/presentation/conference_info/widget/conference_collaborators.dart';
@@ -78,6 +79,7 @@ class _ConferenceInfoScreenState extends State<ConferenceInfoScreen> {
         child: BlocBuilder<ConferenceInfoCubit, ConferenceInfoUiState>(
           builder: (context, state) {
             return state.when(
+              initial: () => const SizedBox(),
               loading: () => const Center(
                 child: CircularProgressIndicator(),
               ),
@@ -108,15 +110,12 @@ class _ConferenceInfoScreenState extends State<ConferenceInfoScreen> {
                   ),
                 ),
               ),
-              error: (message) => Center(
-                  child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Text(message,
-                    style: GoogleFonts.inter(
-                        fontSize: 14,
-                        fontWeight: FontWeight.normal,
-                        color: colorGreyDark)),
-              )),
+              error: (message) => Container(
+                color: const Color(0xFFF9FAFB),
+                child: ErrorScreen(onPressed: () {
+                  context.read<ConferenceInfoCubit>().fetchConference(id: _id!);
+                }),
+              ),
             );
           },
         ),

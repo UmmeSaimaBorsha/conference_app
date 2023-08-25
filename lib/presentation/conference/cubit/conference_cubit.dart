@@ -6,9 +6,10 @@ import 'package:react_conf/injection_container.dart';
 import 'package:react_conf/presentation/conference/state/conference_ui_state.dart';
 
 class ConferenceCubit extends Cubit<ConferenceUiState> {
-  ConferenceCubit() : super(const ConferenceUiState.loading());
+  ConferenceCubit() : super(const ConferenceUiState.initial());
 
   Future<void> fetchConferences() async {
+    emit(const ConferenceUiState.loading());
     final useCase = getIt<GetConferencesUseCase>();
     final result = await useCase();
     result.when(
