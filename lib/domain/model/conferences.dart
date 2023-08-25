@@ -8,7 +8,7 @@ part 'conferences.g.dart';
 @freezed
 class Conferences with _$Conferences {
   const factory Conferences({
-    @JsonKey(name: 'conferences') required List<Conference?> conferences,
+    @JsonKey(name: 'conferences') required List<Conference?>? conferences,
   }) = _Conferences;
 
   factory Conferences.fromJson(Map<String, dynamic> json) =>

@@ -13,8 +13,8 @@ class ConferenceCubit extends Cubit<ConferenceUiState> {
     final useCase = getIt<GetConferencesUseCase>();
     final result = await useCase();
     result.when(
-        success: (conferences) => emit(
-            ConferenceUiState.success(conferences: conferences.conferences)),
+        success: (conferences) => emit(ConferenceUiState.success(
+            conferences: conferences.conferences ?? [])),
         failure: (failure) =>
             emit(ConferenceUiState.error(message: failure.message)));
   }

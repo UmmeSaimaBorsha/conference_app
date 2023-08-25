@@ -5,8 +5,8 @@ import 'package:react_conf/presentation/conference_info/widget/no_content.dart';
 import 'package:react_conf/presentation/conference_info/widget/schedule_item.dart';
 import 'package:react_conf/presentation/theme/color.dart';
 
-class ConferenceSchedule extends StatelessWidget {
-  const ConferenceSchedule({
+class ConferenceSchedules extends StatelessWidget {
+  const ConferenceSchedules({
     super.key,
     required this.schedules,
   });

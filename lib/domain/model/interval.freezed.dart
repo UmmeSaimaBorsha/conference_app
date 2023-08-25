@@ -25,7 +25,7 @@ mixin _$Interval {
   @JsonKey(name: "end")
   String? get end => throw _privateConstructorUsedError;
   @JsonKey(name: "sessions")
-  List<Session>? get sessions => throw _privateConstructorUsedError;
+  List<Session?>? get sessions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +41,7 @@ abstract class $IntervalCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "begin") String? begin,
       @JsonKey(name: "end") String? end,
-      @JsonKey(name: "sessions") List<Session>? sessions});
+      @JsonKey(name: "sessions") List<Session?>? sessions});
 }
 
 /// @nodoc
@@ -73,7 +73,7 @@ class _$IntervalCopyWithImpl<$Res, $Val extends Interval>
       sessions: freezed == sessions
           ? _value.sessions
           : sessions // ignore: cast_nullable_to_non_nullable
-              as List<Session>?,
+              as List<Session?>?,
     ) as $Val);
   }
 }
@@ -88,7 +88,7 @@ abstract class _$$_IntervalCopyWith<$Res> implements $IntervalCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "begin") String? begin,
       @JsonKey(name: "end") String? end,
-      @JsonKey(name: "sessions") List<Session>? sessions});
+      @JsonKey(name: "sessions") List<Session?>? sessions});
 }
 
 /// @nodoc
@@ -118,7 +118,7 @@ class __$$_IntervalCopyWithImpl<$Res>
       sessions: freezed == sessions
           ? _value._sessions
           : sessions // ignore: cast_nullable_to_non_nullable
-              as List<Session>?,
+              as List<Session?>?,
     ));
   }
 }
@@ -129,7 +129,7 @@ class _$_Interval implements _Interval {
   const _$_Interval(
       {@JsonKey(name: "begin") required this.begin,
       @JsonKey(name: "end") required this.end,
-      @JsonKey(name: "sessions") required final List<Session>? sessions})
+      @JsonKey(name: "sessions") required final List<Session?>? sessions})
       : _sessions = sessions;
 
   factory _$_Interval.fromJson(Map<String, dynamic> json) =>
@@ -141,10 +141,10 @@ class _$_Interval implements _Interval {
   @override
   @JsonKey(name: "end")
   final String? end;
-  final List<Session>? _sessions;
+  final List<Session?>? _sessions;
   @override
   @JsonKey(name: "sessions")
-  List<Session>? get sessions {
+  List<Session?>? get sessions {
     final value = _sessions;
     if (value == null) return null;
     if (_sessions is EqualUnmodifiableListView) return _sessions;
@@ -190,7 +190,7 @@ abstract class _Interval implements Interval {
   const factory _Interval(
           {@JsonKey(name: "begin") required final String? begin,
           @JsonKey(name: "end") required final String? end,
-          @JsonKey(name: "sessions") required final List<Session>? sessions}) =
+          @JsonKey(name: "sessions") required final List<Session?>? sessions}) =
       _$_Interval;
 
   factory _Interval.fromJson(Map<String, dynamic> json) = _$_Interval.fromJson;
@@ -203,7 +203,7 @@ abstract class _Interval implements Interval {
   String? get end;
   @override
   @JsonKey(name: "sessions")
-  List<Session>? get sessions;
+  List<Session?>? get sessions;
   @override
   @JsonKey(ignore: true)
   _$$_IntervalCopyWith<_$_Interval> get copyWith =>

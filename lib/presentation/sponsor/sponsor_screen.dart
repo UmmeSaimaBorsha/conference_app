@@ -25,7 +25,9 @@ class SponsorScreen extends StatelessWidget {
         ),
         isCenterTitle: false,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: Theme.of(context).platform == TargetPlatform.android
+              ? const Icon(Icons.arrow_back)
+              : const Icon(Icons.arrow_back_ios),
           onPressed: onBackPressed,
         ),
       ),

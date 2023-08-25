@@ -21,7 +21,7 @@ Conferences _$ConferencesFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Conferences {
   @JsonKey(name: 'conferences')
-  List<Conference?> get conferences => throw _privateConstructorUsedError;
+  List<Conference?>? get conferences => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $ConferencesCopyWith<$Res> {
           Conferences value, $Res Function(Conferences) then) =
       _$ConferencesCopyWithImpl<$Res, Conferences>;
   @useResult
-  $Res call({@JsonKey(name: 'conferences') List<Conference?> conferences});
+  $Res call({@JsonKey(name: 'conferences') List<Conference?>? conferences});
 }
 
 /// @nodoc
@@ -51,13 +51,13 @@ class _$ConferencesCopyWithImpl<$Res, $Val extends Conferences>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? conferences = null,
+    Object? conferences = freezed,
   }) {
     return _then(_value.copyWith(
-      conferences: null == conferences
+      conferences: freezed == conferences
           ? _value.conferences
           : conferences // ignore: cast_nullable_to_non_nullable
-              as List<Conference?>,
+              as List<Conference?>?,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$_ConferencesCopyWith<$Res>
       __$$_ConferencesCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'conferences') List<Conference?> conferences});
+  $Res call({@JsonKey(name: 'conferences') List<Conference?>? conferences});
 }
 
 /// @nodoc
@@ -84,13 +84,13 @@ class __$$_ConferencesCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? conferences = null,
+    Object? conferences = freezed,
   }) {
     return _then(_$_Conferences(
-      conferences: null == conferences
+      conferences: freezed == conferences
           ? _value._conferences
           : conferences // ignore: cast_nullable_to_non_nullable
-              as List<Conference?>,
+              as List<Conference?>?,
     ));
   }
 }
@@ -100,19 +100,21 @@ class __$$_ConferencesCopyWithImpl<$Res>
 class _$_Conferences implements _Conferences {
   const _$_Conferences(
       {@JsonKey(name: 'conferences')
-      required final List<Conference?> conferences})
+      required final List<Conference?>? conferences})
       : _conferences = conferences;
 
   factory _$_Conferences.fromJson(Map<String, dynamic> json) =>
       _$$_ConferencesFromJson(json);
 
-  final List<Conference?> _conferences;
+  final List<Conference?>? _conferences;
   @override
   @JsonKey(name: 'conferences')
-  List<Conference?> get conferences {
+  List<Conference?>? get conferences {
+    final value = _conferences;
+    if (value == null) return null;
     if (_conferences is EqualUnmodifiableListView) return _conferences;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_conferences);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -151,14 +153,14 @@ class _$_Conferences implements _Conferences {
 abstract class _Conferences implements Conferences {
   const factory _Conferences(
       {@JsonKey(name: 'conferences')
-      required final List<Conference?> conferences}) = _$_Conferences;
+      required final List<Conference?>? conferences}) = _$_Conferences;
 
   factory _Conferences.fromJson(Map<String, dynamic> json) =
       _$_Conferences.fromJson;
 
   @override
   @JsonKey(name: 'conferences')
-  List<Conference?> get conferences;
+  List<Conference?>? get conferences;
   @override
   @JsonKey(ignore: true)
   _$$_ConferencesCopyWith<_$_Conferences> get copyWith =>

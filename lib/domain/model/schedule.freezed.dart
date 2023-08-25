@@ -23,7 +23,7 @@ mixin _$Schedule {
   @JsonKey(name: "day")
   String? get day => throw _privateConstructorUsedError;
   @JsonKey(name: "intervals")
-  List<Interval>? get intervals => throw _privateConstructorUsedError;
+  List<Interval?>? get intervals => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +38,7 @@ abstract class $ScheduleCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "day") String? day,
-      @JsonKey(name: "intervals") List<Interval>? intervals});
+      @JsonKey(name: "intervals") List<Interval?>? intervals});
 }
 
 /// @nodoc
@@ -65,7 +65,7 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
       intervals: freezed == intervals
           ? _value.intervals
           : intervals // ignore: cast_nullable_to_non_nullable
-              as List<Interval>?,
+              as List<Interval?>?,
     ) as $Val);
   }
 }
@@ -79,7 +79,7 @@ abstract class _$$_ScheduleCopyWith<$Res> implements $ScheduleCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "day") String? day,
-      @JsonKey(name: "intervals") List<Interval>? intervals});
+      @JsonKey(name: "intervals") List<Interval?>? intervals});
 }
 
 /// @nodoc
@@ -104,7 +104,7 @@ class __$$_ScheduleCopyWithImpl<$Res>
       intervals: freezed == intervals
           ? _value._intervals
           : intervals // ignore: cast_nullable_to_non_nullable
-              as List<Interval>?,
+              as List<Interval?>?,
     ));
   }
 }
@@ -114,7 +114,7 @@ class __$$_ScheduleCopyWithImpl<$Res>
 class _$_Schedule implements _Schedule {
   const _$_Schedule(
       {@JsonKey(name: "day") required this.day,
-      @JsonKey(name: "intervals") required final List<Interval>? intervals})
+      @JsonKey(name: "intervals") required final List<Interval?>? intervals})
       : _intervals = intervals;
 
   factory _$_Schedule.fromJson(Map<String, dynamic> json) =>
@@ -123,10 +123,10 @@ class _$_Schedule implements _Schedule {
   @override
   @JsonKey(name: "day")
   final String? day;
-  final List<Interval>? _intervals;
+  final List<Interval?>? _intervals;
   @override
   @JsonKey(name: "intervals")
-  List<Interval>? get intervals {
+  List<Interval?>? get intervals {
     final value = _intervals;
     if (value == null) return null;
     if (_intervals is EqualUnmodifiableListView) return _intervals;
@@ -172,7 +172,7 @@ abstract class _Schedule implements Schedule {
   const factory _Schedule(
       {@JsonKey(name: "day") required final String? day,
       @JsonKey(name: "intervals")
-      required final List<Interval>? intervals}) = _$_Schedule;
+      required final List<Interval?>? intervals}) = _$_Schedule;
 
   factory _Schedule.fromJson(Map<String, dynamic> json) = _$_Schedule.fromJson;
 
@@ -181,7 +181,7 @@ abstract class _Schedule implements Schedule {
   String? get day;
   @override
   @JsonKey(name: "intervals")
-  List<Interval>? get intervals;
+  List<Interval?>? get intervals;
   @override
   @JsonKey(ignore: true)
   _$$_ScheduleCopyWith<_$_Schedule> get copyWith =>

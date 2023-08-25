@@ -9,7 +9,7 @@ part 'schedule.g.dart';
 class Schedule with _$Schedule {
   const factory Schedule({
     @JsonKey(name: "day") required String? day,
-    @JsonKey(name: "intervals") required List<Interval>? intervals,
+    @JsonKey(name: "intervals") required List<Interval?>? intervals,
   }) = _Schedule;
 
   factory Schedule.fromJson(Map<String, dynamic> json) =>

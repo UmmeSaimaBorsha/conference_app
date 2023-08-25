@@ -9,7 +9,8 @@ part of 'schedule.dart';
 _$_Schedule _$$_ScheduleFromJson(Map<String, dynamic> json) => _$_Schedule(
       day: json['day'] as String?,
       intervals: (json['intervals'] as List<dynamic>?)
-          ?.map((e) => Interval.fromJson(e as Map<String, dynamic>))
+          ?.map((e) =>
+              e == null ? null : Interval.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

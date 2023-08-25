@@ -10,7 +10,7 @@ class ConferenceItem extends StatelessWidget {
       required this.isTop,
       required this.isBottom});
 
-  final Conference conference;
+  final Conference? conference;
   final bool isTop;
   final bool isBottom;
 
@@ -20,11 +20,11 @@ class ConferenceItem extends StatelessWidget {
       padding: const EdgeInsets.only(left: 16),
       child: Column(
         children: [
-          ConferenceDate(date: conference.startDate, isTop: isTop),
+          ConferenceDate(date: conference?.startDate, isTop: isTop),
           ConferenceBasicInfo(
-              id: conference.id,
-              name: conference.name,
-              slogan: conference.slogan,
+              id: conference?.id,
+              name: conference?.name,
+              slogan: conference?.slogan,
               isBottom: isBottom),
           if (isBottom) const SizedBox(height: 24),
         ],

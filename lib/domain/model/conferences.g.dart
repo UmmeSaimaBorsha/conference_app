@@ -8,8 +8,8 @@ part of 'conferences.dart';
 
 _$_Conferences _$$_ConferencesFromJson(Map<String, dynamic> json) =>
     _$_Conferences(
-      conferences: (json['conferences'] as List<dynamic>)
-          .map((e) =>
+      conferences: (json['conferences'] as List<dynamic>?)
+          ?.map((e) =>
               e == null ? null : Conference.fromJson(e as Map<String, dynamic>))
           .toList(),
     );

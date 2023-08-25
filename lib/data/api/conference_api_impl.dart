@@ -6,7 +6,7 @@ class ConferenceApiImpl implements ConferenceApi {
 
   ConferenceApiImpl({required ApiClient client}) : _client = client;
 
-  static const baseUrl = 'https://api.react-finland.fi/graphql';
+  static const baseUrl = 'https://api.react-finland.fi/graphql/';
 
   @override
   Future<dynamic> getConferences() {

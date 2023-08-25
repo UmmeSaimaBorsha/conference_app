@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:react_conf/presentation/theme/color.dart';
 
-class ErrorScreen extends StatelessWidget {
-  const ErrorScreen({super.key, required this.onPressed});
+class ErrorContent extends StatelessWidget {
+  const ErrorContent({super.key, required this.onPressed});
 
   final VoidCallback onPressed;
 

@@ -10,7 +10,8 @@ _$_Interval _$$_IntervalFromJson(Map<String, dynamic> json) => _$_Interval(
       begin: json['begin'] as String?,
       end: json['end'] as String?,
       sessions: (json['sessions'] as List<dynamic>?)
-          ?.map((e) => Session.fromJson(e as Map<String, dynamic>))
+          ?.map((e) =>
+              e == null ? null : Session.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

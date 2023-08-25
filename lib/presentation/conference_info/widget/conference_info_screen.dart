@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:react_conf/presentation/common/widget/custom_app_bar.dart';
-import 'package:react_conf/presentation/common/widget/error_screen.dart';
+import 'package:react_conf/presentation/common/widget/error_content.dart';
 import 'package:react_conf/presentation/conference_info/cubit/conference_info_cubit.dart';
 import 'package:react_conf/presentation/conference_info/state/conference_info_ui_state.dart';
 import 'package:react_conf/presentation/conference_info/widget/conference_collaborators.dart';
 import 'package:react_conf/presentation/conference_info/widget/conference_info_tab_bar.dart';
-import 'package:react_conf/presentation/conference_info/widget/conference_schedule.dart';
+import 'package:react_conf/presentation/conference_info/widget/conference_schedules.dart';
 import 'package:react_conf/presentation/theme/color.dart';
 
 class ConferenceInfoScreenArgs {
@@ -24,33 +24,33 @@ class ConferenceInfoScreen extends StatefulWidget {
 }
 
 class _ConferenceInfoScreenState extends State<ConferenceInfoScreen> {
-  String? _id;
-  var organizersKey = GlobalKey();
-  var speakersKey = GlobalKey();
-  var schedulesKey = GlobalKey();
-  var sponsorsKey = GlobalKey();
+  String _id = '';
+  final _organizersKey = GlobalKey();
+  final _speakersKey = GlobalKey();
+  final _schedulesKey = GlobalKey();
+  final _sponsorsKey = GlobalKey();
 
   @override
   void didChangeDependencies() {
     final routeSettings = ModalRoute.of(context)!.settings;
     final args = routeSettings.arguments as ConferenceInfoScreenArgs;
-    _id = args.id;
+    _id = args.id ?? '';
     super.didChangeDependencies();
   }
 
   void _onTabSelected(int index) {
     switch (index) {
       case 0:
-        Scrollable.ensureVisible(organizersKey.currentContext!);
+        Scrollable.ensureVisible(_organizersKey.currentContext!);
         break;
       case 1:
-        Scrollable.ensureVisible(speakersKey.currentContext!);
+        Scrollable.ensureVisible(_speakersKey.currentContext!);
         break;
       case 2:
-        Scrollable.ensureVisible(schedulesKey.currentContext!);
+        Scrollable.ensureVisible(_schedulesKey.currentContext!);
         break;
       case 3:
-        Scrollable.ensureVisible(sponsorsKey.currentContext!);
+        Scrollable.ensureVisible(_sponsorsKey.currentContext!);
         break;
     }
   }
@@ -75,7 +75,7 @@ class _ConferenceInfoScreenState extends State<ConferenceInfoScreen> {
         ),
       ),
       body: BlocProvider(
-        create: (context) => ConferenceInfoCubit()..fetchConference(id: _id!),
+        create: (context) => ConferenceInfoCubit()..fetchConference(id: _id),
         child: BlocBuilder<ConferenceInfoCubit, ConferenceInfoUiState>(
           builder: (context, state) {
             return state.when(
@@ -89,20 +89,20 @@ class _ConferenceInfoScreenState extends State<ConferenceInfoScreen> {
                   child: Column(
                     children: [
                       ConferenceCollaborators(
-                        key: organizersKey,
+                        key: _organizersKey,
                         conferenceCollaborator: conference?.organizers ?? [],
                         collaboratorType: 'Organizers',
                       ),
                       ConferenceCollaborators(
-                        key: speakersKey,
+                        key: _speakersKey,
                         conferenceCollaborator: conference?.speakers ?? [],
                         collaboratorType: 'Speakers',
                       ),
-                      ConferenceSchedule(
-                          key: schedulesKey,
+                      ConferenceSchedules(
+                          key: _schedulesKey,
                           schedules: conference?.schedules ?? []),
                       ConferenceCollaborators(
-                        key: sponsorsKey,
+                        key: _sponsorsKey,
                         conferenceCollaborator: conference?.sponsors ?? [],
                         collaboratorType: 'Sponsors',
                       ),
@@ -112,8 +112,8 @@ class _ConferenceInfoScreenState extends State<ConferenceInfoScreen> {
               ),
               error: (message) => Container(
                 color: const Color(0xFFF9FAFB),
-                child: ErrorScreen(onPressed: () {
-                  context.read<ConferenceInfoCubit>().fetchConference(id: _id!);
+                child: ErrorContent(onPressed: () {
+                  context.read<ConferenceInfoCubit>().fetchConference(id: _id);
                 }),
               ),
             );

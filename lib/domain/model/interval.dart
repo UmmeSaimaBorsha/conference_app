@@ -10,7 +10,7 @@ class Interval with _$Interval {
   const factory Interval({
     @JsonKey(name: "begin") required String? begin,
     @JsonKey(name: "end") required String? end,
-    @JsonKey(name: "sessions") required List<Session>? sessions,
+    @JsonKey(name: "sessions") required List<Session?>? sessions,
   }) = _Interval;
 
   factory Interval.fromJson(Map<String, dynamic> json) =>
