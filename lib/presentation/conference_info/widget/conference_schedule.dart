@@ -1,6 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:react_conf/domain/model/schedule.dart';
+import 'package:react_conf/presentation/conference_info/widget/no_content.dart';
 import 'package:react_conf/presentation/conference_info/widget/schedule_item.dart';
 import 'package:react_conf/presentation/theme/color.dart';
 
@@ -30,16 +31,18 @@ class ConferenceSchedule extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               color: const Color(0xFFF9FAFB),
             ),
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: schedules.length,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  final schedule = schedules[index];
-                  return ScheduleItem(
-                      schedule: schedule,
-                      isBottom: index == schedules.length - 1);
-                }))
+            child: schedules.isEmpty
+                ? const NoContent(type: 'schedules')
+                : ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: schedules.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final schedule = schedules[index];
+                      return ScheduleItem(
+                          schedule: schedule,
+                          isBottom: index == schedules.length - 1);
+                    }))
       ],
     );
   }

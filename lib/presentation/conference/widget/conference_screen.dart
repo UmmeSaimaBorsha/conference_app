@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:react_conf/presentation/common/widget/error_screen.dart';
 import 'package:react_conf/presentation/conference/cubit/conference_cubit.dart';
 import 'package:react_conf/presentation/conference/widget/conference_item.dart';
+import 'package:react_conf/presentation/conference/widget/no_content.dart';
 import 'package:react_conf/presentation/theme/color.dart';
 
 class ConferenceScreen extends StatelessWidget {
@@ -20,21 +21,23 @@ class ConferenceScreen extends StatelessWidget {
       success: (conferences) {
         return Container(
           color: colorBackground,
-          child: ListView.builder(
-            itemBuilder: (context, index) {
-              final conference = conferences[index];
-              if (conference == null) {
-                return const SizedBox();
-              } else {
-                return ConferenceItem(
-                  conference: conference,
-                  isTop: index == 0,
-                  isBottom: index == conferences.length - 1,
-                );
-              }
-            },
-            itemCount: conferences.length,
-          ),
+          child: conferences.isEmpty
+              ? const NoContent()
+              : ListView.builder(
+                  itemBuilder: (context, index) {
+                    final conference = conferences[index];
+                    if (conference == null) {
+                      return const SizedBox();
+                    } else {
+                      return ConferenceItem(
+                        conference: conference,
+                        isTop: index == 0,
+                        isBottom: index == conferences.length - 1,
+                      );
+                    }
+                  },
+                  itemCount: conferences.length,
+                ),
         );
       },
     );

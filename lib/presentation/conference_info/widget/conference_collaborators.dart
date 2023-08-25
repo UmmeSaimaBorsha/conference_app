@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:react_conf/domain/model/conference_collaborator.dart';
 import 'package:react_conf/presentation/conference_info/widget/collaborator_item.dart';
+import 'package:react_conf/presentation/conference_info/widget/no_content.dart';
 import 'package:react_conf/presentation/theme/color.dart';
 
 class ConferenceCollaborators extends StatelessWidget {
@@ -32,16 +33,18 @@ class ConferenceCollaborators extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               color: const Color(0xFFF9FAFB),
             ),
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: conferenceCollaborator.length,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  final collaborator = conferenceCollaborator[index];
-                  return CollaboratorItem(
-                      collaborator: collaborator,
-                      isBottom: index == conferenceCollaborator.length - 1);
-                }))
+            child: conferenceCollaborator.isEmpty
+                ? NoContent(type: collaboratorType.toLowerCase())
+                : ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: conferenceCollaborator.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final collaborator = conferenceCollaborator[index];
+                      return CollaboratorItem(
+                          collaborator: collaborator,
+                          isBottom: index == conferenceCollaborator.length - 1);
+                    }))
       ],
     );
   }
