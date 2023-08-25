@@ -29,7 +29,7 @@ class SponsorScreen extends StatelessWidget {
                     children: [
                       Image.asset(
                         'assets/images/img-sponsor-gold.png',
-                        width: 100,
+                        width: 90,
                       ),
                       const SizedBox(height: 32),
                       Row(

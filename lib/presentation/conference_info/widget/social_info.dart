@@ -11,10 +11,26 @@ class SocialInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SocialItem(url: social?.twitter, icon: 'assets/icons/ic-twitter.svg'),
-        SocialItem(url: social?.linkedin, icon: 'assets/icons/ic-linkedin.svg'),
-        SocialItem(url: social?.dribble, icon: 'assets/icons/ic-dribble.svg'),
-        SocialItem(url: social?.github, icon: 'assets/icons/ic-github.svg'),
+        SocialItem(
+          url: social?.twitter,
+          icon: 'assets/icons/ic-twitter.svg',
+          isLeft: true,
+        ),
+        SocialItem(
+          url: social?.linkedin,
+          icon: 'assets/icons/ic-linkedin.svg',
+          isLeft: false,
+        ),
+        SocialItem(
+          url: social?.dribble,
+          icon: 'assets/icons/ic-dribble.svg',
+          isLeft: false,
+        ),
+        SocialItem(
+          url: social?.github,
+          icon: 'assets/icons/ic-github.svg',
+          isLeft: false,
+        ),
       ],
     );
   }

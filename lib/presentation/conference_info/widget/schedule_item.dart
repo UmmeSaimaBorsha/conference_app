@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:react_conf/common/util/date_formatter.dart';
 import 'package:react_conf/domain/model/schedule.dart';
+
+import 'package:react_conf/presentation/common/util/date_formatter.dart';
 
 class ScheduleItem extends StatelessWidget {
   const ScheduleItem(

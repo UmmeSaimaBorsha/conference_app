@@ -22,10 +22,9 @@ class CollaboratorInfo extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 color: const Color(0xFF0A142F)),
           ),
-          const SizedBox(height: 8),
+          if (collaborator?.social == null) const SizedBox(height: 8),
           if (collaborator?.social != null)
             SocialInfo(social: collaborator?.social),
-          if (collaborator?.social != null) const SizedBox(height: 8),
           Text(
             collaborator?.about ?? '',
             style: GoogleFonts.inter(
