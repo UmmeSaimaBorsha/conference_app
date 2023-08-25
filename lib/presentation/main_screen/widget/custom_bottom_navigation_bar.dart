@@ -13,6 +13,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        color: Colors.white,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.02),
@@ -20,6 +21,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
         ],
       ),
       child: BottomNavigationBar(
+        backgroundColor: Colors.white,
         currentIndex: selectedIndex,
         selectedItemColor: colorPrimary,
         unselectedItemColor: colorGreyLight,
