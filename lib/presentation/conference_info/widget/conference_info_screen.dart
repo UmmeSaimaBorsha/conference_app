@@ -9,7 +9,6 @@ import 'package:react_conf/presentation/conference_info/widget/conference_collab
 import 'package:react_conf/presentation/conference_info/widget/conference_info_tab_bar.dart';
 import 'package:react_conf/presentation/conference_info/widget/conference_schedules.dart';
 import 'package:react_conf/presentation/theme/color.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 
 class ConferenceInfoScreenArgs {
   final String? id;
@@ -32,51 +31,51 @@ class _ConferenceInfoScreenState extends State<ConferenceInfoScreen>
   final _schedulesKey = GlobalKey();
   final _sponsorsKey = GlobalKey();
 
-  late TabController _tabController;
-  double _organizersVisibility = 0;
-  double _speakersVisibility = 0;
-  double _schedulesVisibility = 0;
-  double _sponsorsVisibility = 0;
+  late TabController _controller;
+  double _organizersVisibleFactor = 0;
+  double _speakersVisibleFactor = 0;
+  double _schedulesVisibleFactor = 0;
+  double _sponsorsVisibleFactor = 0;
   int _currentIndex = 0;
 
-  void _updateVisibility(double visibility, int index) {
+  void _onVisibilityChanged(double visibleFactor, int index) {
     setState(() {
       switch (index) {
         case 0:
-          _organizersVisibility = visibility;
+          _organizersVisibleFactor = visibleFactor;
           break;
         case 1:
-          _speakersVisibility = visibility;
+          _speakersVisibleFactor = visibleFactor;
           break;
         case 2:
-          _schedulesVisibility = visibility;
+          _schedulesVisibleFactor = visibleFactor;
           break;
         case 3:
-          _sponsorsVisibility = visibility;
+          _sponsorsVisibleFactor = visibleFactor;
           break;
       }
 
-      if (_organizersVisibility > 0) {
+      if (_organizersVisibleFactor > 0) {
         if (_currentIndex != 0) {
           _currentIndex = 0;
-          _tabController.animateTo(0);
+          _controller.animateTo(0);
         }
-      } else if (_speakersVisibility > 0) {
+      } else if (_speakersVisibleFactor > 0) {
         if (_currentIndex != 1) {
           _currentIndex = 1;
-          _tabController.animateTo(1);
+          _controller.animateTo(1);
         }
       } else {
-        if (_schedulesVisibility > 0) {
+        if (_schedulesVisibleFactor > 0) {
           if (_currentIndex != 2) {
             _currentIndex = 2;
-            _tabController.animateTo(2);
+            _controller.animateTo(2);
           }
         }
-        if (_sponsorsVisibility > 0) {
+        if (_sponsorsVisibleFactor > 0) {
           if (_currentIndex != 3) {
             _currentIndex = 3;
-            _tabController.animateTo(3);
+            _controller.animateTo(3);
           }
         }
       }
@@ -93,11 +92,11 @@ class _ConferenceInfoScreenState extends State<ConferenceInfoScreen>
 
   @override
   void initState() {
-    _tabController = TabController(length: 4, vsync: this);
+    _controller = TabController(length: 4, vsync: this);
     super.initState();
   }
 
-  void _onTabSelected(int index) {
+  void _onTap(int index) {
     switch (index) {
       case 0:
         Scrollable.ensureVisible(_organizersKey.currentContext!);
@@ -130,8 +129,8 @@ class _ConferenceInfoScreenState extends State<ConferenceInfoScreen>
         ),
         isCenterTitle: false,
         bottom: ConferenceInfoTabBar(
-          onTabSelected: _onTabSelected,
-          tabController: _tabController,
+          onTap: _onTap,
+          controller: _controller,
         ),
       ),
       body: BlocProvider(
@@ -148,43 +147,30 @@ class _ConferenceInfoScreenState extends State<ConferenceInfoScreen>
                   padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                   child: Column(
                     children: [
-                      VisibilityDetector(
-                        key: _organizersKey,
-                        onVisibilityChanged: (visibilityInfo) {
-                          _updateVisibility(visibilityInfo.visibleFraction, 0);
-                        },
-                        child: ConferenceCollaborators(
-                          conferenceCollaborator: conference?.organizers ?? [],
-                          collaboratorType: 'Organizers',
-                        ),
+                      ConferenceCollaborators(
+                        customKey: _organizersKey,
+                        onVisibilityChanged: _onVisibilityChanged,
+                        conferenceCollaborator: conference?.organizers ?? [],
+                        collaboratorType: 'Organizers',
+                        index: 0,
                       ),
-                      VisibilityDetector(
-                        key: _speakersKey,
-                        onVisibilityChanged: (visibilityInfo) {
-                          _updateVisibility(visibilityInfo.visibleFraction, 1);
-                        },
-                        child: ConferenceCollaborators(
-                          conferenceCollaborator: conference?.speakers ?? [],
-                          collaboratorType: 'Speakers',
-                        ),
+                      ConferenceCollaborators(
+                        customKey: _speakersKey,
+                        onVisibilityChanged: _onVisibilityChanged,
+                        conferenceCollaborator: conference?.speakers ?? [],
+                        collaboratorType: 'Speakers',
+                        index: 1,
                       ),
-                      VisibilityDetector(
-                        key: _schedulesKey,
-                        onVisibilityChanged: (visibilityInfo) {
-                          _updateVisibility(visibilityInfo.visibleFraction, 2);
-                        },
-                        child: ConferenceSchedules(
-                            schedules: conference?.schedules ?? []),
-                      ),
-                      VisibilityDetector(
-                        key: _sponsorsKey,
-                        onVisibilityChanged: (visibilityInfo) {
-                          _updateVisibility(visibilityInfo.visibleFraction, 3);
-                        },
-                        child: ConferenceCollaborators(
-                          conferenceCollaborator: conference?.sponsors ?? [],
-                          collaboratorType: 'Sponsors',
-                        ),
+                      ConferenceSchedules(
+                          customKey: _schedulesKey,
+                          onVisibilityChanged: _onVisibilityChanged,
+                          schedules: conference?.schedules ?? []),
+                      ConferenceCollaborators(
+                        customKey: _sponsorsKey,
+                        onVisibilityChanged: _onVisibilityChanged,
+                        conferenceCollaborator: conference?.sponsors ?? [],
+                        collaboratorType: 'Sponsors',
+                        index: 3,
                       ),
                     ],
                   ),

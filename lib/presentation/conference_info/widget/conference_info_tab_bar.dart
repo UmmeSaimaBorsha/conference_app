@@ -4,10 +4,10 @@ import 'package:react_conf/presentation/theme/color.dart';
 
 class ConferenceInfoTabBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const ConferenceInfoTabBar({super.key, required this.onTabSelected, required this.tabController});
+  const ConferenceInfoTabBar({super.key, required this.onTap, required this.controller});
 
-  final Function(int) onTabSelected;
-  final TabController tabController;
+  final Function(int) onTap;
+  final TabController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +16,8 @@ class ConferenceInfoTabBar extends StatelessWidget
       child: Material(
         color: Colors.white,
         child: TabBar(
-          controller: tabController,
-          onTap: onTabSelected,
+          controller: controller,
+          onTap: onTap,
           indicatorSize: TabBarIndicatorSize.label,
           labelColor: colorPrimary,
           unselectedLabelColor: colorGreyDark,

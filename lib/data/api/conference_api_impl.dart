@@ -70,7 +70,6 @@ class ConferenceApiImpl implements ConferenceApi {
                 },
                 about
           }
-
       }
     }
     ''';

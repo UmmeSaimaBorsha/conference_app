@@ -4,10 +4,10 @@ import 'package:react_conf/presentation/theme/color.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar(
-      {super.key, required this.selectedIndex, required this.onItemSelected});
+      {super.key, required this.currentIndex, required this.onTap});
 
-  final int selectedIndex;
-  final Function(int) onItemSelected;
+  final int currentIndex;
+  final Function(int) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +22,13 @@ class CustomBottomNavigationBar extends StatelessWidget {
       ),
       child: BottomNavigationBar(
         backgroundColor: Colors.white,
-        currentIndex: selectedIndex,
+        currentIndex: currentIndex,
         selectedItemColor: colorPrimary,
         unselectedItemColor: colorGreyLight,
         selectedFontSize: 12,
         unselectedFontSize: 12,
         type: BottomNavigationBarType.fixed,
-        onTap: onItemSelected,
+        onTap: onTap,
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
@@ -36,7 +36,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               width: 24,
               height: 24,
               colorFilter: ColorFilter.mode(
-                selectedIndex == 0 ? colorPrimary : colorGreyLight,
+                currentIndex == 0 ? colorPrimary : colorGreyLight,
                 BlendMode.srcIn,
               ),
             ),
@@ -48,7 +48,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               width: 24,
               height: 24,
               colorFilter: ColorFilter.mode(
-                selectedIndex == 1 ? colorPrimary : colorGreyLight,
+                currentIndex == 1 ? colorPrimary : colorGreyLight,
                 BlendMode.srcIn,
               ),
             ),

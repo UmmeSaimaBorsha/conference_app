@@ -13,28 +13,28 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  late int _selectedIndex;
+  late int _currentIndex;
   late List<Widget> _pages;
-  late PageController _pageController;
+  late PageController _controller;
 
-  void _onItemSelected(int index) {
+  void _onTap(int index) {
     setState(() {
-      _selectedIndex = index;
-      _pageController.jumpToPage(_selectedIndex);
+      _currentIndex = index;
+      _controller.jumpToPage(_currentIndex);
     });
   }
 
   void _onBackPressed() {
     setState(() {
-      _onItemSelected(0);
+      _onTap(0);
     });
   }
 
   @override
   void didChangeDependencies() {
     context.read<ConferenceCubit>().fetchConferences();
-    _selectedIndex = 0;
-    _pageController = PageController(initialPage: _selectedIndex);
+    _currentIndex = 0;
+    _controller = PageController(initialPage: _currentIndex);
     super.didChangeDependencies();
   }
 
@@ -42,19 +42,14 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     _pages = [
       const ConferenceScreen(),
-      WillPopScope(
-          onWillPop: () {
-            _onBackPressed();
-            return Future.value(false);
-          },
-          child: SponsorScreen(onBackPressed: _onBackPressed)),
+      SponsorScreen(onBackPressed: _onBackPressed),
     ];
     super.initState();
   }
 
   @override
   void dispose() {
-    _pageController.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -62,13 +57,13 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        controller: _pageController,
+        controller: _controller,
         physics: const NeverScrollableScrollPhysics(),
         children: _pages,
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
-        selectedIndex: _selectedIndex,
-        onItemSelected: _onItemSelected,
+        currentIndex: _currentIndex,
+        onTap: _onTap,
       ),
     );
   }
